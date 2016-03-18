@@ -3,11 +3,12 @@
 var audioCtx = new window.AudioContext();
 
 const body = document.querySelector('body');
-var currentNode;
+var oscillator = audioCtx.createOscillator();
+oscillator.type = 'sine';
+oscillator.start();
+oscillator.connect(audioCtx.destination);
 
 body.onkeydown = (e) => {
-  var oscillator = audioCtx.createOscillator();
-  oscillator.type = 'sine';
   switch(e.keyCode){
     case 32:
       oscillator.frequency.value = 1174;
@@ -28,17 +29,7 @@ body.onkeydown = (e) => {
       oscillator.frequency.value = 0;
       break;
   }
-
-  //oscillator.frequency.value = 1000;
-  oscillator.start();
-  oscillator.connect(audioCtx.destination);
-  currentNode = oscillator;
 };
-
-body.onkeyup = (e) => {
-  currentNode.disconnect();
-};
-
 
 //Notes
 //(A)  D    36.71   1174
