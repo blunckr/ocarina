@@ -9,7 +9,28 @@ body.onkeydown = (e) => {
   console.log(e.keyCode, 1);
   var oscillator = audioCtx.createOscillator();
   oscillator.type = 'sine';
-  oscillator.frequency.value = 3000;
+  switch(e.keyCode){
+    case 32:
+      oscillator.frequency.value = 1174;
+      break;
+    case 40:
+      oscillator.frequency.value = 1396;
+      break;
+    case 37: //left
+      oscillator.frequency.value = 1975;
+      break;
+    case 38: //up
+      oscillator.frequency.value = 2349;
+      break;
+    case 39: //right
+      oscillator.frequency.value = 1760;
+      break;
+    default:
+      oscillator.frequency.value = 0;
+      break;
+  }
+
+  //oscillator.frequency.value = 1000;
   oscillator.start();
   oscillator.connect(audioCtx.destination);
   currentNode = oscillator;
@@ -19,3 +40,11 @@ body.onkeyup = (e) => {
   console.log(e.keyCode, 2);
   currentNode.disconnect();
 };
+
+
+//Notes
+//(A)  D    36.71   1174
+//(CV) F    43.65
+//(C>) A    55.00
+//(C<) B    61.74
+//(C^) D    73.42
