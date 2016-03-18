@@ -6,7 +6,6 @@ const body = document.querySelector('body');
 var currentNode;
 
 body.onkeydown = (e) => {
-  console.log(e.keyCode, 1);
   var oscillator = audioCtx.createOscillator();
   oscillator.type = 'sine';
   switch(e.keyCode){
@@ -37,7 +36,6 @@ body.onkeydown = (e) => {
 };
 
 body.onkeyup = (e) => {
-  console.log(e.keyCode, 2);
   currentNode.disconnect();
 };
 
